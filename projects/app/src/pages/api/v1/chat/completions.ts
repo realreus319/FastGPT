@@ -269,6 +269,8 @@ export default withNextCors(async function handler(req: NextApiRequest, res: Nex
         ...(detail ? { responseData: feResponseData } : {}),
         id: chatId || '',
         model: '',
+        object: 'chat.completion', //增加字段，符合openAI api格式要求
+        created: startTime, //增加字段，符合openAI api格式要求
         usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 1 },
         choices: [
           {
